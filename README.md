@@ -81,11 +81,39 @@ uv sync
 
 ### 5. 앱 실행
 
+#### 방법 1: 직접 실행 (개발용)
 ```bash
 uv run streamlit run app.py
 ```
 
 브라우저에서 자동으로 `http://localhost:8501` 이 열립니다.
+
+#### 방법 2: systemd 서비스로 실행 (프로덕션/항상 실행)
+```bash
+# 서비스 등록, 활성화 및 시작
+sudo ./service.sh start
+
+# 서비스 상태 확인
+./service.sh status
+
+# 서비스 중지
+sudo ./service.sh stop
+
+# 서비스 재시작
+sudo ./service.sh restart
+
+# 서비스 로그 보기
+./service.sh logs
+
+# 서비스 완전히 제거
+sudo ./service.sh disable
+```
+
+**서비스 등록 시 장점:**
+- 시스템 부팅 시 자동 시작
+- 비정상 종료 시 자동 재시작
+- 백그라운드에서 항상 실행
+- systemd로 중앙 관리
 
 ## 사용 방법
 
@@ -109,13 +137,15 @@ google-search-api-streamit/
 ├── pyproject.toml      # 프로젝트 설정
 ├── PRD.md             # 제품 요구사항 문서
 ├── README.md          # 프로젝트 설명
+├── CLAUDE.md          # Claude Code 가이드
 │
 ├── app.py             # Streamlit 메인 앱 (UI 구성)
 ├── config.py          # 설정 및 상수
 ├── styles.py          # CSS 스타일 정의
 ├── gemini_api.py      # Gemini API 연동 로직
 ├── ui_components.py   # UI 컴포넌트 함수들
-└── utils.py           # 유틸리티 함수들
+├── utils.py           # 유틸리티 함수들
+└── service.sh         # systemd 서비스 관리 스크립트
 ```
 
 ## 개발 환경 설정
