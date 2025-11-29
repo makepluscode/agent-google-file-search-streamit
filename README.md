@@ -1,5 +1,7 @@
 # Gemini File Search 챗봇 🔍
 
+![Screenshot](sceenshot.png)
+
 Google Gemini File Search API를 활용한 문서 기반 질의응답 웹 애플리케이션입니다.
 
 ## 주요 기능
